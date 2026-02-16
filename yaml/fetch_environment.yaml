@@ -1,0 +1,35 @@
+uvmf:
+  util_components:
+    "fetch_predictor":
+      type: "predictor"
+      analysis_exports:
+       - name: "agent_analysis_export"
+         type: "fetch_in_transaction"
+      analysis_ports:
+       - name: "predictor_analysis_port"
+         type: "fetch_out_transaction"
+  environments:
+    "fetch":
+      agents:
+      - initiator_responder: "INITIATOR"
+        name: "fin_agent"
+        type: "fetch_in"
+      - initiator_responder: "INITIATOR"
+        name: "fout_agent"
+        type: "fetch_out"
+      analysis_components:
+      - name: "predictor"
+        type: "fetch_predictor"
+      imports:
+      - name: "lc3_prediction_pkg"
+      scoreboards:
+      - name: "fetch_scoreboard"
+        sb_type: "uvmf_in_order_scoreboard"
+        trans_type: "fetch_out_transaction"
+      tlm_connections:
+      - driver: "fin_agent.monitored_ap"
+        receiver: "predictor.agent_analysis_export"
+      - driver: "predictor.predictor_analysis_port"
+        receiver: "fetch_scoreboard.expected_analysis_export"
+      - driver: "fout_agent.monitored_ap"
+        receiver: "fetch_scoreboard.actual_analysis_export"

@@ -1,0 +1,51 @@
+uvmf:
+  interfaces:
+    memaccess_out:
+      clock: clk
+      reset: rst
+      reset_assertion_level: 'True'
+
+      config_constraints: []
+      config_vars: []
+
+      hvl_typedefs: []
+
+      parameters: []
+      
+      ports:
+      - name: dmem_addr
+        dir: output
+        width: '16'
+      - name: dmem_din
+        dir: output
+        width: '16'  
+      - name: dmem_rd
+        dir: output
+        width: '1'
+      - name: memout
+        dir: output
+        width: '16'
+      
+      response_info:
+        data: []
+        operation: 1'b0
+  
+      
+      transaction_vars:
+      - name: dmem_addr
+        type: bit [15:0]
+        iscompare: 'True'
+        isrand: 'True'
+      - name: dmem_din
+        type: bit [15:0]
+        iscompare: 'True'
+        isrand: 'True'
+      - name: dmem_rd
+        type: bit
+        iscompare: 'True'
+        isrand: 'True'
+      - name: memout
+        type: bit [15:0]
+        iscompare: 'True'
+        isrand: 'False'
+        

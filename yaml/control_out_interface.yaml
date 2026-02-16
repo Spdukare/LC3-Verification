@@ -1,0 +1,87 @@
+uvmf:
+  interfaces:
+    control_out:
+      clock: clock
+      reset: reset
+      reset_assertion_level: 'True'
+      veloce_ready: 'False'
+      ports:
+      - name: bypass_alu_1
+        width: '1'
+        dir: input
+        reset_value: '''bz'
+      - name: bypass_alu_2
+        width: '1'
+        dir: input
+        reset_value: '''bz'
+      - name: bypass_mem_1
+        width: '1'
+        dir: input
+        reset_value: '''bz'
+      - name: bypass_mem_2
+        width: '1'
+        dir: input
+        reset_value: '''bz'
+      - name: enable_fetch
+        width: '1'
+        dir: input
+        reset_value: '''bz'
+      - name: enable_decode
+        width: '1'
+        dir: input
+        reset_value: '''bz'
+      - name: enable_execute
+        width: '1'
+        dir: input
+        reset_value: '''bz'
+      - name: enable_writeback
+        width: '1'
+        dir: input
+        reset_value: '''bz'
+      - name: enable_updatePC
+        width: '1'
+        dir: input
+        reset_value: '''bz'
+      - name: mem_state
+        width: '2'
+        dir: input
+        reset_value: '''bz'
+      - name: br_taken
+        width: '1'
+        dir: input
+        reset_value: '''bz'
+      transaction_vars:
+      - name: "bypass_alu_1"
+        type: "bit"
+        iscompare: "True"
+      - name: "bypass_alu_2"
+        type: "bit"
+        iscompare: "True"
+      - name: "bypass_mem_1"
+        type: "bit"
+        iscompare: "True"
+      - name: "bypass_mem_2"
+        type: "bit"
+        iscompare: "True"
+      - name: "enable_fetch"
+        type: "bit"
+        iscompare: "True"
+      - name: "enable_decode"
+        type: "bit"
+        iscompare: "True"
+      - name: "enable_execute"
+        type: "bit"
+        iscompare: "True"
+      - name: "enable_writeback"
+        type: "bit"
+        iscompare: "True"
+      - name: "enable_updatePC"
+        type: "bit"
+        iscompare: "True"
+      - name: "mem_state"
+        type: "bit [1:0]"
+        iscompare: "True"
+      - name: "br_taken"
+        type: "bit"
+        iscompare: "True"
+      

@@ -1,0 +1,72 @@
+uvmf:
+  interfaces:
+    memaccess_in:
+      clock: clk
+      reset: rst
+      reset_assertion_level: 'True'
+
+      config_constraints: []
+      config_vars: []
+
+      hdl_typedefs:
+      - name: mem_state_t
+        type: enum bit[1:0] {IDLE = 2'b00, READ_MEM = 2'b01, WRITE_MEM = 2'b10, HIGHZ = 2'b11}
+      - name: m_control_t
+        type: bit
+      - name: mem_data_t
+        type: bit [15:0]
+      - name: mem_addr_t
+        type: bit [15:0]
+      - name: dmem_dout_t
+        type: bit [15:0]
+      hvl_typedefs: []
+
+      parameters: []
+      
+      ports:
+      - name: m_data
+        dir: input
+        width: '16'
+      - name: m_addr
+        dir: input
+        width: '16'  
+      - name: m_control
+        dir: input
+        width: '1'
+      - name: mem_state
+        dir: input
+        width: '2'
+      - name: dmem_dout
+        dir: input
+        width: '16'
+
+      response_info:
+        data: []
+        operation: 1'b0
+      
+      transaction_constraints:
+      - name: valid_mem_state_c
+        value: '{ mem_state inside {IDLE, READ_MEM, WRITE_MEM, HIGHZ}; }'
+      
+      transaction_vars:
+      - name: mem_state
+        type: mem_state_t
+        iscompare: 'True'
+        isrand: 'True'
+      - name: m_control
+        type: m_control_t
+        iscompare: 'True'
+        isrand: 'True'
+      - name: m_data
+        type: mem_data_t
+        iscompare: 'True'
+        isrand: 'True'
+      - name: m_Addr
+        type: mem_addr_t
+        iscompare: 'True'
+        isrand: 'True'
+      - name: dmem_dout
+        type: dmem_dout_t
+        iscompare: 'True'
+        isrand: 'False'
+        

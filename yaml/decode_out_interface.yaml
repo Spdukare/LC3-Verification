@@ -1,0 +1,48 @@
+uvmf:
+  interfaces:
+    decode_out:
+      clock: clock
+      reset: reset
+      reset_assertion_level: 'True'
+      veloce_ready: 'False'
+      ports:
+      - name: IR
+        width: '16'
+        dir: input
+        reset_value: '''bz'
+      - name: E_control
+        width: '6'
+        dir: input
+        reset_value: '''bz'
+      - name: npc_out
+        width: '16'
+        dir: input
+        reset_value: '''bz'
+      - name: Mem_control
+        width: '1'
+        dir: input
+        reset_value: '''bz'
+      - name: W_control
+        width: '2'
+        dir: input
+        reset_value: '''bz'
+      - name: enable_decode
+        width: '1'
+        dir: input
+        reset_value: '''bz'
+      transaction_vars:
+      - name: "IR"
+        type: "bit [15:0]"
+        iscompare: "True"
+      - name: "E_control"
+        type: "bit [5:0]"
+        iscompare: "True"
+      - name: "npc_out"
+        type: "bit [15:0]"
+        iscompare: "True"
+      - name: "Mem_control"
+        type: "bit"
+        iscompare: "True"
+      - name: "W_control"
+        type: "bit [1:0]"
+        iscompare: "True"

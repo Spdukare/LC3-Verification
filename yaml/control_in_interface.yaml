@@ -1,0 +1,51 @@
+uvmf:
+  interfaces:
+    control_in:
+      clock: clock
+      reset: reset
+      reset_assertion_level: 'True'
+      veloce_ready: 'False'
+      ports:
+      - name: complete_data
+        width: '1'
+        dir: output
+        reset_value: '''bz'
+      - name: complete_instr
+        width: '1'
+        dir: output
+        reset_value: '''bz'
+      - name: IR
+        width: '16'
+        dir: output
+        reset_value: '''bz'
+      - name: IR_Exec
+        width: '16'
+        dir: output
+        reset_value: '''bz'
+      - name: psr
+        width: '3'
+        dir: output
+        reset_value: '''bz'
+      - name: NZP
+        width: '3'
+        dir: output
+        reset_value: '''bz'
+      - name: Instr_dout
+        width: '16'
+        dir: output
+        reset_value: '''bz'
+      transaction_vars:
+      - name: "complete_data"
+        type: "bit"
+      - name: "complete_instr"
+        type: "bit"
+      - name: "IR"
+        type: "bit [15:0]"
+      - name: "IR_Exec"
+        type: "bit [15:0]"
+      - name: "psr"
+        type: "bit [2:0]"
+      - name: "NZP"
+        type: "bit [2:0]"
+      - name: "Instr_dout"
+        type: "bit [15:0]"
